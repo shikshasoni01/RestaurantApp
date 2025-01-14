@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Images from "./../images/logo.jpg";
 
 const Navbar2 = (props) => {
   return (
@@ -8,10 +9,15 @@ const Navbar2 = (props) => {
       style={{ fontFamily: ' "Merriweather", serif' }}
     >
       <a className="nav-link" style={{ marginLeft: "20px" }}>
-        GKMIT RESTAURANT <span className="sr-only"></span>
+        <img
+          src={Images}
+          alt="Leaf is busy"
+          style={{ width: "25px", height: "25px" }}
+        />
+        LEAF RESTAURANT <span className="sr-only"></span>
       </a>
       <Link className="navbar-brand mx-auto">
-        <b>Checkout the Tasty Food </b>
+        <b></b>
       </Link>
       <Link className="btn btn-primary mx-4" to="/menu" role="button">
         Menu
