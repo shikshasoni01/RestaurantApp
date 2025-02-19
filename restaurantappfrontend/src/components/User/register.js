@@ -14,11 +14,16 @@ export const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setRole(() => {
-      "USER";
-    });
+    // setRole(() => {
+    //   "USER";
+    // });
     if (email === "admin@mailinator.com") setRole("ADMIN");
+    else
+      setRole(() => {
+        "USER";
+      });
     console.log(role);
+    console.log(email);
     const newEntry = {
       fullName: fullName,
       email: email,

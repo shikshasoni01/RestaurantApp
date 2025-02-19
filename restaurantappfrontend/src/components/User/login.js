@@ -48,6 +48,7 @@ export const Login = () => {
         //updateFormData(res.data); // Store the response in state
         navigate("/Home");
       } catch (error) {
+        alert("Passowrd is wrong");
         console.error("Error saving record:", error);
       }
     }

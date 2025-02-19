@@ -1,6 +1,7 @@
 package com.restaurant.controller;
 
 
+import com.restaurant.DTO.UserDTO;
 import com.restaurant.constant.Webconstant;
 import com.restaurant.requestwrapper.UserLoginRequestWrapper;
 import com.restaurant.requestwrapper.UserRequestWrapper;
@@ -49,6 +50,18 @@ public class UserController {
 		JSONObject data = ResponseFormatter.formatter(Webconstant.KEY_STATUS_SUCCESS, 200, "Login Successful",user);
 
 		System.out.println("login user end");
+
+		return new ResponseEntity<>(data, HttpStatus.OK);
+	}
+	@GetMapping(value ="/userLogged")
+	public ResponseEntity<JSONObject> getUserLogged()  {
+
+		System.out.println("get login user Start");
+
+		UserDTO user= userService.getUserLogged();
+		JSONObject data = ResponseFormatter.formatter(Webconstant.KEY_STATUS_SUCCESS, 200, "User LoggedIn ",user);
+
+		System.out.println(" get login user end");
 
 		return new ResponseEntity<>(data, HttpStatus.OK);
 	}

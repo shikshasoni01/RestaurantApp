@@ -3,6 +3,7 @@ package com.restaurant.service;
 
 
 
+import com.restaurant.DTO.UserDTO;
 import com.restaurant.entity.RoleType;
 import com.restaurant.entity.User;
 import com.restaurant.entity.UserLoggedIn;
@@ -57,24 +58,40 @@ public class UserService  {
         {
             throw new RestaurantException("User already exist",400);
         }
-
     }
+    public UserDTO getUserLogged() throws RestaurantException
+    {
+        List<UserLoggedIn> userLoggedIn= userLoggedRepository.findAll();
+        System.out.println(userLoggedIn);
+        UserDTO userDTO= new UserDTO();
+        for (UserLoggedIn user:userLoggedIn){
 
+            userDTO.setUserId(user.getUser().getId());
+            userDTO.setName(user.getUser().getFullName());
+            userDTO.setEmail(user.getUser().getEmail());
+            userDTO.setRoleId(user.getUser().getRole().getId());
+            userDTO.setRoleType(user.getUser().getRole().getRole());
+        }
+        return userDTO;
+    }
 
     public boolean login(UserLoginRequestWrapper userLoginRequestWrapper) throws RestaurantException
     {
         Optional<User> user= userRepository.findByEmailIgnoreCase(userLoginRequestWrapper.getEmail());
 
-        userLoggedRepository.deleteAll();
+
 
         if (user.isPresent())
         {
            if (user.get().getPassword().equals(userLoginRequestWrapper.getPassword())) {
+               userLoggedRepository.deleteAll();
                UserLoggedIn newUserLogged= new UserLoggedIn();
-
                newUserLogged.setUser(user.get());
                userLoggedRepository.save(newUserLogged);
                return true;
+           }
+           else {
+               throw new RestaurantException("Password not match",400);
            }
         }
 

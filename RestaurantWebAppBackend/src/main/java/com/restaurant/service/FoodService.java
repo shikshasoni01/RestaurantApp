@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -44,8 +43,15 @@ public class FoodService {
     }
     public List<Food> getAllFoodByCategory(long id)
     {
-        List<Food> food=  foodRepository.findByCategory(id);
-        return food;
+        Optional<Category> category =categoryRepository.findById(id);
+        if(category.isPresent()) {
+            List<Food> food = foodRepository.findByCategory(category.get());
+            return food;
+        }
+        else {
+            throw new RestaurantException(
+                    "CategoryNotExist", 400);
+        }
     }
 
 

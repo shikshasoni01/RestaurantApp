@@ -1,15 +1,89 @@
 .welcome {
   display: flex;
-  flex-wrap: wrap;
-  gap: 75px;
+  flex-direction: column;
+  /* gap: 75px; */
   padding: 30px;
-  height: 100rem;
+  /* height: 100rem; */
   margin-bottom: 1rem;
   font-family: "Merriweather", serif;
   background: url("./../images/food.jpeg");
   background-size: cover;
   justify-content: center;
+  align-items: center;
 }
 .welcome h2 {
   color: rgb(132, 108, 59);
+  justify-content: center;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: grey no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  animation: fadeIn 2s ease-in-out;
+}
+.content {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  animation: slideUp 1.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.coupon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ff5733;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+button {
+  background: #ff5733;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+button:hover {
+  background: #e04e2f;
 }
