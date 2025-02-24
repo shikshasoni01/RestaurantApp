@@ -22,6 +22,10 @@
   margin: 120px 200px 30px 240px;
   margin-bottom: 1rem;
 }
+.content p {
+  font-size: 20px;
+  color: whitesmoke;
+}
 .aboutus {
   background: url("./../images/aboutus.webp");
   background-size: cover;
@@ -29,9 +33,9 @@
   opacity: 0.8;
   font-family: "Merriweather", serif;
 }
-.hero-logo {
+.hero-logo1 {
   margin: 20px;
-  margin-left: 580px;
+  margin-left: 800px;
   height: 10rem;
   width: 10rem;
   display: flex;

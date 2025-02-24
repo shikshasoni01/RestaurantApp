@@ -10,7 +10,13 @@ import axios from "axios";
 export default function Checkout() {
   const [data, setData] = useState([]);
 
-  const [userLogged, setUserLogged] = useState([]);
+  const [userLogged, setUserLogged] = useState({
+    userId: 1,
+    name: "shiksha soni",
+    email: "soni@mailinator.com",
+    roleId: 1,
+    roleType: "ADMIN",
+  });
 
   const fetchUser = async () => {
     const url = "http://localhost:5000/api/user/userLogged";
@@ -26,13 +32,13 @@ export default function Checkout() {
       console.error("Error fetching data:", error);
     }
   };
-  const getData = async () => {
+  const getData = async (id) => {
     const url = "http://localhost:5000/api/cart/getCartItemByUser";
+
     try {
       const response = await axios.get(url, {
         headers: {
-          userId: 11,
-          "Content-Type": "application/json",
+          userId: id,
         },
       });
       console.log(response.data.data);
@@ -41,13 +47,10 @@ export default function Checkout() {
       console.error("Error fetching data:", error);
     }
   };
-  // useEffect(() => {
-  //   fetchUser();
-  // }, []);
+
   useEffect(async () => {
     await fetchUser();
-    console.log(userLogged);
-    await getData();
+    await getData(userLogged.userId);
   }, []);
 
   return (
@@ -67,22 +70,26 @@ export default function Checkout() {
           <Link className="btn btn-light mx-1" to="/Home" role="button">
             Back
           </Link>
+          <Link
+            className="btn btn-primary mx-auto"
+            style={{ left: "650px", top: "200px" }}
+            to="/payment"
+          >
+            Payment
+          </Link>
           <h3 className="h3">
             <i>Checkout your favourite food Added: </i>
           </h3>
           <div className="cart-container">
-            {data.map((f) => {
-              return (
-                <>
-                  <div className="fooditem">
-                    <div className="foodname">{f.food_name}</div>
-                    <div>{f.food_price}</div>
-                    <div>{f.quantity}</div>
-                    <div>{f.food_price * f.quantity}</div>
-                  </div>
-                </>
-              );
-            })}
+            {console.log(data)}
+            {data.map((f) => (
+              <div className="fooditem">
+                <div className="foodname">{f.foodName}</div>
+                <div>{f.foodPrice}</div>
+                <div>{f.quantity}</div>
+                <div>{f.foodPrice * f.quantity}</div>
+              </div>
+            ))}
 
             <div className="coupon">
               <InputGroup className="mb-3">
@@ -98,14 +105,6 @@ export default function Checkout() {
             </div>
           </div>
         </div>
-
-        <Link
-          className="btn btn-primary mx-auto"
-          style={{ position: "fixed", left: "650px", top: "740px" }}
-          to="/payment"
-        >
-          Payment
-        </Link>
       </div>
     </>
   );

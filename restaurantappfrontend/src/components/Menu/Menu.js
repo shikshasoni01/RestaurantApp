@@ -9,6 +9,7 @@ import Badge from "react-bootstrap/Badge";
 const Menu = () => {
   const [category, setCategory] = useState([]);
   const [menu, setMenu] = useState([]);
+  const [isCartButtonClicked, setIsCartButtonClicked] = useState(false);
   const [userLogged, setUserLogged] = useState({});
 
   const fetchUser = async () => {
@@ -131,10 +132,11 @@ const Menu = () => {
                       <Button
                         variant="primary"
                         onClick={() => {
+                          setIsCartButtonClicked(true);
                           addToCart(userLogged.userId, f.id);
                         }}
                       >
-                        Add to cart
+                        {isCartButtonClicked ? "Added to cart" : "Add to cart"}
                       </Button>
                     </Card.Body>
                     <Card.Text>

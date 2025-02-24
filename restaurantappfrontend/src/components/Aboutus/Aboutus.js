@@ -35,7 +35,7 @@ const Aboutus = () => {
             </i>
           </p>
         </div>
-        <div className="hero-logo">
+        <div className="hero-logo1">
           <img src={Images} alt="Leaf is busy" />
         </div>
         <p className="greetings">

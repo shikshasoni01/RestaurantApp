@@ -79,7 +79,7 @@ export const Login = () => {
           </form>
         </div>
       </div>
-      <img className="login" src={Image} />
+      {/* <img className="login" src={Image} /> */}
     </>
   );
 };
