@@ -3,7 +3,7 @@ import Navbar from "../Navbar/Navbar";
 import axios from "axios";
 import Image from "./../../components/images/foodie.jpeg";
 import { useNavigate } from "react-router-dom";
-import "../../../src/./App.css";
+import "../User/register.css";
 export const Register = () => {
   const [fullName, setfullName] = useState("");
   const [email, setEmail] = useState("");
@@ -51,42 +51,43 @@ export const Register = () => {
   return (
     <div>
       <Navbar />
-      <div className="App">
-        <div className="auth-form-container">
-          <h2>Register</h2>
-          <form className="register-form" onSubmit={handleSubmit}>
-            <label htmlFor="fullname">Full name</label>
-            <input
-              value={fullName}
-              onChange={(e) => {
-                setfullName(e.target.value);
-              }}
-              type="fullname"
-              placeholder="Enter your Full name"
-            />
-            <label htmlFor="email">Email</label>
-            <input
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              type="email"
-              placeholder="Enter your email"
-            />
-            <label htmlFor="password">Password</label>
-            <input
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              type="password"
-              placeholder="Enter your password"
-            />
-            <button>Register</button>
-          </form>
+      <div className="container-content">
+        <div className="register-container">
+          <div className="auth-form-container">
+            <h2>Register</h2>
+            <form className="register-form" onSubmit={handleSubmit}>
+              <label htmlFor="fullname">Full name</label>
+              <input
+                value={fullName}
+                onChange={(e) => {
+                  setfullName(e.target.value);
+                }}
+                type="fullname"
+                placeholder="Enter your Full name"
+              />
+              <label htmlFor="email">Email</label>
+              <input
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                type="email"
+                placeholder="Enter your email"
+              />
+              <label htmlFor="password">Password</label>
+              <input
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+                type="password"
+                placeholder="Enter your password"
+              />
+              <button>Register</button>
+            </form>
+          </div>
         </div>
       </div>
-      <img className="register" src={Image} />
     </div>
   );
 };

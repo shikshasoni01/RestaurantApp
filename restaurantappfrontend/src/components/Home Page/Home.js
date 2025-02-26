@@ -1,7 +1,5 @@
 import React from "react";
 import Image from "./../images/logo.jpg";
-//import Homepage from "./Homepage";
-import Navbar from "../Navbar/Navbar";
 import "./Home.css";
 
 const Home = () => {
@@ -9,7 +7,7 @@ const Home = () => {
     <>
       <section id="hero">
         <div class="hero-container">
-          <div className="hero-logo">
+          <div className="logo">
             <img src={Image} alt="Leaf is busy" />
           </div>
           <h1> Welcome To Leaf Restaurant</h1>
